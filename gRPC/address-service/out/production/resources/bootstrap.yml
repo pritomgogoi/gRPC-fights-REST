@@ -1,3 +1,0 @@
-spring.application.name: 'directory-service'
-server.port: 8081
-spring.sleuth.sampler.percentage: 1.0
