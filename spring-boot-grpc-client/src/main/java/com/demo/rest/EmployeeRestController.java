@@ -2,6 +2,7 @@ package com.demo.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -11,15 +12,15 @@ public class EmployeeRestController {
     @Autowired
     private RestTemplate restTemplate;
 
-    @GetMapping("/employee")
-    public Employee getEmployee(){
-    final Employee employee = new Employee();
+    @GetMapping("/rest/employee/{id}")
+    public Employee getEmployee(@PathVariable String id) {
 
-    final Address address = restTemplate.getForObject("http://localhost:9081/address", Address.class);
+        final Employee employee = new Employee();
+        employee.setName("Pritom Gogoi");
 
-    employee.setName("Pritom Gogoi");
-    employee.setAddress(address);
+        final Address address = restTemplate.getForObject("http://localhost:9081/address/" + id, Address.class);
+        employee.setAddress(address);
 
-    return employee;
+        return employee;
     }
 }
