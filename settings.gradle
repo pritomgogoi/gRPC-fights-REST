@@ -1,4 +1,0 @@
-include 'gRPC/employee-service'
-include 'gRPC/address-service'
-include 'REST/employee-service'
-include 'REST/address-service'
